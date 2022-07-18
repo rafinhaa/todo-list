@@ -16,6 +16,7 @@ export const Todo = () => {
           </p>
         </div>
       </header>
+      <EmptyTodo />
     </div>
   );
 };
