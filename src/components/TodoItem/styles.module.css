@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  max-width: 46rem;
+  width: 100%;
+
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  border-radius: 8px;
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.container button {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+.container button div {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid var(--blue);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.container div button svg {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid var(--purple-dark);
+  background-color: var(--purple-dark);
+  color: var(--gray-100);
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.taskNotCompleted {
+  font-size: 0.875rem;
+  color: var(--gray-100);
+}
+
+.taskCompleted {
+  font-size: 0.875rem;
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.trashButton {
+  color: var(--gray-300);
+  border: 1px solid var(--gray-300);
+}
+
+.trashButton:hover {
+  color: var(--danger);
+  background-color: var(--gray-400);
+}
