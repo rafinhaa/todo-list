@@ -27,11 +27,20 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+  const handleCompletedTodo = (id: string) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) todo.completed = !todo.completed;
+
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <div>
       <Header />
       <Form handleAddTodo={handleAddTodo} />
-      <Todo todos={todos} />
+      <Todo todos={todos} handleCompletedTodo={handleCompletedTodo} />
     </div>
   );
 }

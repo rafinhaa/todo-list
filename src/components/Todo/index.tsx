@@ -7,15 +7,26 @@ import styles from "./styles.module.css";
 
 interface ITodoProps {
   todos: ITodo[];
+  handleCompletedTodo: (id: string) => void;
 }
 
-export const Todo = ({ todos }: ITodoProps) => {
+export const Todo = ({ todos, handleCompletedTodo }: ITodoProps) => {
   const allTodos = todos.length;
   const counterTodos = allTodos > 0 ? styles.counterTodos : styles.counterEmpty;
+  const completedTodos = todos.filter((todo) => todo.completed).length;
 
   const CreatedTodosCounter = () => (
     <p>
       Tarefas criadas<span className={counterTodos}>{allTodos}</span>
+    </p>
+  );
+
+  const AllTodosCounter = () => (
+    <p>
+      Concluídas
+      <span className={counterTodos}>
+        {allTodos > 0 ? `${completedTodos} de ${allTodos}` : `0`}
+      </span>
     </p>
   );
 
@@ -26,13 +37,17 @@ export const Todo = ({ todos }: ITodoProps) => {
           <CreatedTodosCounter />
         </div>
         <div className={styles.contentRight}>
-          <p>
-            Concluídas<span className={styles.counterEmpty}>0</span>
-          </p>
+          <AllTodosCounter />
         </div>
       </header>
       {todos.length > 0 ? (
-        todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
+        todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            handleCompletedTodo={handleCompletedTodo}
+          />
+        ))
       ) : (
         <EmptyTodo />
       )}
