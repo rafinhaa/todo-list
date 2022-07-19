@@ -8,9 +8,14 @@ import styles from "./styles.module.css";
 interface ITodoProps {
   todos: ITodo[];
   handleCompletedTodo: (id: string) => void;
+  handleDeleteTodo: (id: string) => void;
 }
 
-export const Todo = ({ todos, handleCompletedTodo }: ITodoProps) => {
+export const Todo = ({
+  todos,
+  handleCompletedTodo,
+  handleDeleteTodo,
+}: ITodoProps) => {
   const allTodos = todos.length;
   const counterTodos = allTodos > 0 ? styles.counterTodos : styles.counterEmpty;
   const completedTodos = todos.filter((todo) => todo.completed).length;
@@ -46,6 +51,7 @@ export const Todo = ({ todos, handleCompletedTodo }: ITodoProps) => {
             key={todo.id}
             todo={todo}
             handleCompletedTodo={handleCompletedTodo}
+            handleDeleteTodo={handleDeleteTodo}
           />
         ))
       ) : (

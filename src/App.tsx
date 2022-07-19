@@ -36,11 +36,20 @@ function App() {
     setTodos(newTodos);
   };
 
+  const handleDeleteTodo = (id: string) => {
+    const todosWithoutDeleted = todos.filter((todo) => todo.id !== id);
+    setTodos(todosWithoutDeleted);
+  };
+
   return (
     <div>
       <Header />
       <Form handleAddTodo={handleAddTodo} />
-      <Todo todos={todos} handleCompletedTodo={handleCompletedTodo} />
+      <Todo
+        todos={todos}
+        handleCompletedTodo={handleCompletedTodo}
+        handleDeleteTodo={handleDeleteTodo}
+      />
     </div>
   );
 }

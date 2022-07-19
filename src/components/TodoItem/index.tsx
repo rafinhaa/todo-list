@@ -7,11 +7,13 @@ import styles from "./styles.module.css";
 interface ITodoItemProps {
   todo: ITodo;
   handleCompletedTodo: (id: string) => void;
+  handleDeleteTodo: (id: string) => void;
 }
 
 export const TodoItem = ({
   todo: { id, title, completed },
   handleCompletedTodo,
+  handleDeleteTodo,
 }: ITodoItemProps) => {
   const isCompleted = completed
     ? styles.taskCompleted
@@ -19,6 +21,10 @@ export const TodoItem = ({
 
   const handleCompleted = () => {
     handleCompletedTodo(id);
+  };
+
+  const handleDelete = () => {
+    handleDeleteTodo(id);
   };
 
   const CheckBox = () => (
@@ -34,7 +40,7 @@ export const TodoItem = ({
         <p className={isCompleted}>{title}</p>
       </div>
 
-      <button className={styles.trashButton}>
+      <button onClick={handleDelete} className={styles.trashButton}>
         <Trash size={16} />
       </button>
     </div>
