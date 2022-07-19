@@ -1,7 +1,17 @@
 import { EmptyTodo } from "../EmptyTodo";
+import { TodoItem } from "../TodoItem";
 import styles from "./styles.module.css";
 
-export const Todo = () => {
+interface ITodo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+interface ITodoProps {
+  todos: ITodo[];
+}
+
+export const Todo = ({ todos }: ITodoProps) => {
   return (
     <div className={styles.container}>
       <header>
@@ -16,7 +26,11 @@ export const Todo = () => {
           </p>
         </div>
       </header>
-      <EmptyTodo />
+      {todos.length > 0 ? (
+        todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
+      ) : (
+        <EmptyTodo />
+      )}
     </div>
   );
 };
