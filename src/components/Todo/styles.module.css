@@ -31,7 +31,18 @@
   line-height: 1.063;
 }
 
-.container header div p span {
+.counterTodos {
+  color: var(--gray-200);
+  background-color: var(--gray-300);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 0.938;
+  margin-left: 0.5rem;
+}
+
+.counterEmpty {
   color: var(--gray-200);
   background-color: var(--gray-400);
   padding: 2px 8px;

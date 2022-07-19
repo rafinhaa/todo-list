@@ -1,15 +1,14 @@
+import { ITodo } from "../../App";
+
 import { Trash, Check } from "phosphor-react";
+
 import styles from "./styles.module.css";
 
-interface ITodo {
-  todo: {
-    id: number;
-    title: string;
-    completed: boolean;
-  };
+interface ITodoItemProps {
+  todo: ITodo;
 }
 
-export const TodoItem = ({ todo: { title, completed } }: ITodo) => {
+export const TodoItem = ({ todo: { title, completed } }: ITodoItemProps) => {
   const isCompleted = completed
     ? styles.taskCompleted
     : styles.taskNotCompleted;

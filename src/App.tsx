@@ -6,26 +6,31 @@ import { Todo } from "./components/Todo";
 
 import "./global.css";
 
-const allTodos = [
-  {
-    id: 1,
-    title: "Tarefa 1",
-    completed: false,
-  },
-  {
-    id: 2,
-    title: "Tarefa 2",
-    completed: true,
-  },
-];
+export interface ITodo {
+  id: string;
+  title: string;
+  completed: boolean;
+}
 
 function App() {
-  const [todos, setTodos] = useState(allTodos);
+  const [todos, setTodos] = useState<ITodo[]>([]);
+
+  const handleAddTodo = (title: string) => {
+    if (title.trim().length <= 0) return;
+
+    const newTodo: ITodo = {
+      id: crypto.randomUUID(),
+      title,
+      completed: false,
+    };
+
+    setTodos([...todos, newTodo]);
+  };
 
   return (
     <div>
       <Header />
-      <Form />
+      <Form handleAddTodo={handleAddTodo} />
       <Todo todos={todos} />
     </div>
   );
